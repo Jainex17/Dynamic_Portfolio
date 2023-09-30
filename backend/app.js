@@ -15,3 +15,4 @@ import usersRoute from './routes/usersRoute.js';
 app.use('/api/v1', usersRoute);
 
 export default app;
+
