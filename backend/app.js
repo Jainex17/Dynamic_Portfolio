@@ -6,12 +6,12 @@ const app = express();
 import dotenv from 'dotenv';
 dotenv.config({path:".env"});
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-app.get('/hello', (req, res) => {
-    res.send('Hello hello World!');
-});
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
+// import routes
+import usersRoute from './routes/usersRoute.js';
+
+app.use('/api/v1', usersRoute);
 
 export default app;
