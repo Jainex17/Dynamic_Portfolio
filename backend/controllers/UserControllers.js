@@ -38,13 +38,19 @@ export const signinUser = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        if(!email || !password) return res.status(400).json({ message: "Not all fields have been entered." });
+        if(!email || !password) return res.status(400).json({ 
+            success: false,
+            message: "Not all fields have been entered." });
 
         const user = await Users.findOne({ email: email });
-        if(!user) return res.status(400).json({ message: "Invalid credentials." });
+        if(!user) return res.status(400).json({ 
+            success: false,
+            message: "Invalid credentials." });
 
         const isMatch = await bcrypt.compare(password, user.passwordHash);
-        if(!isMatch) return res.status(400).json({ message: "Invalid credentials." });
+        if(!isMatch) return res.status(400).json({ 
+            success: false,
+            message: "Invalid credentials." });
 
         const token = generateToken(user._id);
 
