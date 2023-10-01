@@ -13,7 +13,9 @@ const userSchema = new mongoose.Schema({
     },
 
     passwordHash: { type: String, required: true },    
-
+    name: { type: String},
+    phone: { type: String},
+    github: { type: String},
 });
 
 userSchema.pre("save", function (next) {

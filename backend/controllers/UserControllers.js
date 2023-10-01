@@ -101,3 +101,50 @@ export const logoutUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export const saveUserdetails = async (req, res) => {
+
+    try {
+        const { name, phone, github } = req.body;
+
+        if(!name || !phone || !github) return res.status(400).json({ 
+            success: false,
+            message: "Not all fields have been entered." });
+
+        let user = await Users.findById(req.user.id);
+        if(!user) return res.status(400).json({ 
+            success: false,
+            message: "User not found." });
+
+        user.name = name;
+        user.phone = phone;
+        user.github = github;
+
+        await user.save();
+
+        res.status(200).json({ 
+            success: true,
+            message: "User details saved successfully.",
+            user: user
+        });
+        
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export const getUserdetails = async (req, res) => {
+    
+    let user = await Users.findById(req.user.id);
+
+    
+    if(!user){
+        return next(new ErrorHander("user not found",404));
+    }
+
+    res.status(200).json({ 
+        success: true,
+        message: "User details fetched successfully.",
+        user: user
+    });
+};
