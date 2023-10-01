@@ -70,3 +70,34 @@ export const signinUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export const verifyUser = async (req, res) => {
+
+    let user = await Users.findById(req.user.id);
+    if(!user){
+        return next(new ErrorHander("user not found",404));
+    }
+    
+    res.status(200).json({ 
+        success: true,
+        message: "User verified successfully.",
+        user: user
+    });
+};
+
+export const logoutUser = async (req, res) => {
+    try {
+        res.cookie("token", "", {
+            expires: new Date(Date.now()),
+            httpOnly: true
+        });
+
+        res.status(200).json({ 
+            success: true,
+            message: "User logged out successfully."
+        });
+        
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
