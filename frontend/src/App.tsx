@@ -81,7 +81,7 @@ function App() {
 
   function checklogin() {
       try{
-        axios.get(`http://localhost:5000/api/v1/verifyuser`, {
+        axios.get(`https://dynamic-portfolio-livid.vercel.app/api/v1/verifyuser`, {
           withCredentials: true,
         })
         .then((res) => {

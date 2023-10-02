@@ -99,7 +99,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
 
   const handleLogout = () => {
-    axios.get("http://localhost:5000/api/v1/logout",
+    axios.get("https://dynamic-portfolio-livid.vercel.app/api/v1/logout",
     { withCredentials: true })
     .then((res) => {
       if (res.data.success) {

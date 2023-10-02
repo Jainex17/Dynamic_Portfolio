@@ -31,7 +31,7 @@ export const Signupcomp: React.FC<Props> = ({islogin}) => {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/v1/signup`,
+        `https://dynamic-portfolio-livid.vercel.app/api/v1/signup`,
         { email, password },
         {
           headers: {
