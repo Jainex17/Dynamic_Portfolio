@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 dotenv.config({path:".env"});
 
 app.use(cors({
-    origin: 'https://jainex17.vercel.app/',
+    origin: 'https://jainex17.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
