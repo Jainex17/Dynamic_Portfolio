@@ -8,15 +8,15 @@ const app = express();
 import dotenv from 'dotenv';
 dotenv.config({path:".env"});
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(cors({
-    origin: '*',
+    origin: 'https://jainex17.vercel.app/',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     optionSuccessStatus:200,
 }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // import routes
 import usersRoute from './routes/usersRoute.js';
