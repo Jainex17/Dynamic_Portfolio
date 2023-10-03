@@ -24,7 +24,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const verifyToken = async () => {
         try {
           const tokenRes = await axios.post(
-            `https://dynamic-portfolio-livid.vercel.app/api/v1/verifyuser`,
+            `https://jainex17-backend.vercel.app/api/v1/verifyuser`,
             null,
             { headers: { "x-auth-token": token } }
           );

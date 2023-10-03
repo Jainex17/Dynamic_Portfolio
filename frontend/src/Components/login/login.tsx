@@ -26,7 +26,7 @@ export const Logincomp: React.FC<Props> = ({islogin, setislogin}) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `https://dynamic-portfolio-livid.vercel.app/api/v1/signin`,
+        `https://jainex17-backend.vercel.app/api/v1/signin`,
         { email, password },
         {
           headers: {

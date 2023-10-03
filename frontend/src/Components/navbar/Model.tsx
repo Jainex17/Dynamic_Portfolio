@@ -29,7 +29,7 @@ export default function BasicModal({Modelopen, handleModelClose}: Props) {
 
     const handlesave = () => {
       try{
-        axios.post('https://dynamic-portfolio-livid.vercel.app/api/v1/savedetails', {name, phone, github}, {withCredentials: true}).then((res) => {
+        axios.post('https://jainex17-backend.vercel.app/api/v1/savedetails', {name, phone, github}, {withCredentials: true}).then((res) => {
           console.log(res);
             
         if(res.data.success){
