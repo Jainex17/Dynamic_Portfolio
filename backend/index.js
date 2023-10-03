@@ -1,5 +1,4 @@
 import express from 'express';
-import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 const app = express();
@@ -8,12 +7,12 @@ const app = express();
 import dotenv from 'dotenv';
 dotenv.config({path:".env"});
 
-app.use(cors({
-    origin: 'https://jainex17.vercel.app/',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    optionSuccessStatus:200,
-}));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://jainex17.vercel.app/');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    next();
+  });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
